@@ -7,7 +7,6 @@ PAW-ANTARA-WEEK9-20240140103
 
 
 ### 2. Tampilan Pengujian API (Postman / Thunder Client)
-<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224648" src="https://github.com/user-attachments/assets/53731d23-b78e-4c9a-8265-71e78cdb88ed" />
 
 <img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224758" src="https://github.com/user-attachments/assets/0d6932ad-50c0-494f-b5d0-8f3f59ec6729" />
 
