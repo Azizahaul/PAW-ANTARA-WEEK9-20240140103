@@ -1,91 +1,26 @@
-# Todo API (Express + Sequelize + PostgreSQL)
+PAW-ANTARA-WEEK9-20240140103
 
-Struktur MVC simple, auth pake session (bukan JWT), buat login & CRUD todo.
+1. Tampilan Web UI (Browser)
+<img width="1056" height="866" alt="Cuplikan layar 2026-08-12 230652" src="https://github.com/user-attachments/assets/d0df9820-26ca-485b-8f37-8451c08215c7" />
 
-## Struktur folder
-```
-todo-api/
-├── app.js                  # entry point
-├── config/
-│   └── database.js         # koneksi sequelize
-├── models/
-│   ├── user.model.js
-│   ├── todo.model.js
-│   └── index.js
-├── controllers/
-│   ├── auth.controller.js
-│   └── todo.controller.js
-├── middlewares/
-│   └── auth.middleware.js  # cek session login
-├── routes/
-│   ├── auth.routes.js
-│   └── todo.routes.js
-├── seeders/
-│   └── seed.js              # data dummy user & todo
-└── utils/
-    └── response.js         # format response konsisten
-```
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 230708" src="https://github.com/user-attachments/assets/423fda4d-24af-481f-9193-4044fa60798b" />
 
-## Cara install & jalanin
 
-1. Bikin database postgres dulu:
-```sql
-CREATE DATABASE todo_db;
-```
+### 2. Tampilan Pengujian API (Postman / Thunder Client)
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224648" src="https://github.com/user-attachments/assets/53731d23-b78e-4c9a-8265-71e78cdb88ed" />
 
-2. Copy `.env.example` jadi `.env`, terus sesuaikan kredensial DB kamu.
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224758" src="https://github.com/user-attachments/assets/0d6932ad-50c0-494f-b5d0-8f3f59ec6729" />
 
-3. Install dependency:
-```bash
-npm install
-```
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224831" src="https://github.com/user-attachments/assets/3a0f9181-dd88-4f7f-86b6-7abe81018b85" />
 
-4. Jalankan server:
-```bash
-npm run dev
-```
-Tabel `users` dan `todos` bakal otomatis kebuat pas server pertama kali nyala (lewat `sequelize.sync()`).
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224908" src="https://github.com/user-attachments/assets/5c026646-2641-4006-b1bc-f700c02ddaa5" />
 
-## Seeder (data dummy)
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 224937" src="https://github.com/user-attachments/assets/da89fc99-ab07-44e3-8ad6-b45260df89eb" />
 
-Buat isi database dengan data awal (2 user + beberapa todo), tinggal jalanin:
-```bash
-npm run seed
-```
-Ini bakal bikin (atau skip kalo udah ada, aman dijalanin berkali-kali):
-- User `rizki` & `budi`, password sama-sama `password123`
-- Beberapa todo dummy punya masing-masing user
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 225114" src="https://github.com/user-attachments/assets/2a35798a-73c3-4698-9b52-ea28ea09242b" />
 
-Setelah itu langsung bisa login pake salah satu user di atas buat testing endpoint todo.
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 225209" src="https://github.com/user-attachments/assets/e35bcc0b-bf8f-4649-98b3-d27fc64f3a49" />
 
-## Endpoint
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 225856" src="https://github.com/user-attachments/assets/61a1fbeb-90a4-4b8e-81ed-beb3fdd00e48" />
 
-### Auth
-| Method | Endpoint            | Body                          | Keterangan          |
-|--------|----------------------|--------------------------------|----------------------|
-| POST   | /api/auth/register   | `{ username, password }`      | Daftar user baru     |
-| POST   | /api/auth/login      | `{ username, password }`      | Login, bikin session |
-| POST   | /api/auth/logout     | -                              | Logout               |
-
-### Todo (wajib login / punya session valid)
-| Method | Endpoint         | Body                          | Keterangan            |
-|--------|-------------------|--------------------------------|-------------------------|
-| GET    | /api/todos        | -                               | List semua todo user   |
-| POST   | /api/todos        | `{ title }`                    | Tambah todo baru       |
-| PUT    | /api/todos/:id    | `{ title?, is_done? }`         | Update todo            |
-| DELETE | /api/todos/:id    | -                               | Hapus todo             |
-
-## Format response
-Semua response pake format seragam:
-```json
-{
-  "code": 200,
-  "success": true,
-  "message": "...",
-  "data": { }
-}
-```
-
-## Catatan
-- Auth pake `express-session`, session id disimpan di cookie `connect.sid`. Kalo test pake Postman/Insomnia, pastiin cookie di-enable biar session kebawa antar-request.
-- Kalo mau deploy production, ganti session store default (in-memory) ke store yang persist, misal `connect-pg-simple` biar session gak ilang tiap restart server.
+<img width="1920" height="1200" alt="Cuplikan layar 2026-08-12 225923" src="https://github.com/user-attachments/assets/623a0849-ba7a-4b4d-aca1-1851106abb94" />
